@@ -6,24 +6,11 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:22:40 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/24 11:51:57 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/24 17:06:16 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/fractol.h"
-
-void	create_window(t_win *window)
-{
-	window->mlx_ptr = mlx_init();
-	if (window->mlx_ptr == NULL)
-		exit (EXIT_FAILURE);
-	window->win_ptr = mlx_new_window(window->mlx_ptr, 780, 720, "FRACTOL");
-	if (window->win_ptr == NULL)
-	{
-		free(window->mlx_ptr);
-		exit(EXIT_FAILURE);
-	}
-}
 
 t_img   new_img(int w, int h, t_win *window)
 {
@@ -38,6 +25,23 @@ t_img   new_img(int w, int h, t_win *window)
     image.w = w;
     image.h = h;
     return (image);
+}
+
+t_img	create_window(t_win *window)
+{
+	t_img	image;
+
+	window->mlx_ptr = mlx_init();
+	if (window->mlx_ptr == NULL)
+		exit (EXIT_FAILURE);
+	window->win_ptr = mlx_new_window(window->mlx_ptr, 1170, 1080, "FRACTOL");
+	if (window->win_ptr == NULL)
+	{
+		free(window->mlx_ptr);
+		exit(EXIT_FAILURE);
+	}
+	image = new_img(1170, 1080, window);
+	return (image);
 }
 
 int	exit_window(t_img *image)

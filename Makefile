@@ -7,7 +7,8 @@ IFLAGS = -Iminilibx/minilibx-linux
 LFLAGS = -Lminilibx/minilibx-linux
 OBJ_DIR = ./obj
 
-COMMOM_SRC = sources/keys.c sources/main.c sources/window.c sources/mandelbrot.c
+COMMOM_SRC = sources/keys.c sources/main.c sources/window.c sources/mandelbrot.c sources/parsing.c \
+			 sources/tools.c
 
 SRC = $(COMMOM_SRC)
 

@@ -6,11 +6,12 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:39:23 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/24 12:00:39 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/24 17:58:31 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/fractol.h"
+#include <stdio.h>
 
 static void    img_pix_put(t_img *image, int x, int y, int color)
 {
@@ -20,20 +21,45 @@ static void    img_pix_put(t_img *image, int x, int y, int color)
     *(unsigned int *)pixel = color;
 }
 
+void	zoom_in(t_img *img, double factor, double mouse_x, double mouse_y)
+{    
+	double range_x;
+    double range_y;
+    double center_x;
+    double center_y; 
+	
+	img->it_max += 200 ;
+	range_x = img->x2 - img->x1;
+	range_y = img->y2 - img->y1;
+	center_x = img->x1 + mouse_x / img->zoom;
+	center_y = img->y1 + mouse_y / img->zoom;
+    img->x1 = center_x - (range_x / factor) / 2.0;
+    img->x2 = center_x + (range_x / factor) / 2.0;
+    img->y1 = center_y - (range_y / factor) / 2.0;
+    img->y2 = center_y + (range_y / factor) / 2.0;
+    img->zoom *= factor;
+}
+
+void	init_mandelbrot(t_img *img)
+{
+	img->x1 = -2.0;
+	img->x2 = 0.6;
+	img->y1 = -1.2;
+	img->y2 = 1.2;
+	img->it_max = 2000;
+	img->zoom = 450;
+}
+
 void	mandelbrot(t_img *img)
 {
 	double			image_x, image_y, c_r, c_i, z_r, z_i, tmp;
 	unsigned int	x, y, i;
 	
 	x = 0;
-	img->x1 = -2.0;
-	img->x2 = 0.6;
-	img->y1 = -1.2;
-	img->y2 = 1.2;
-	img->it_max = 500;
-	img->zoom = 300;
 	image_x = (img->x2 - img->x1) * img->zoom;
 	image_y = (img->y2 - img->y1) * img->zoom;
+	printf("x = %f \n", image_x);
+	printf("y = %f \n", image_y);
 	while (x < image_x)
 	{
 		y = 0;
@@ -54,8 +80,9 @@ void	mandelbrot(t_img *img)
 			}
 			if (i == img->it_max)
 				img_pix_put(img, x, y, 0x000000);
-			else
+			else 
 				img_pix_put(img, x, y, i*2000/img->it_max);
+				//img_pix_put(img, x, y, 0xFFFFFF);
 			y++;
 		}
 		x++;

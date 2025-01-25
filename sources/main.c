@@ -6,27 +6,34 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:18:53 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/24 17:38:26 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/25 11:16:59 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/fractol.h"
 
-int main(int argc, char *argv[])
+void	fractal_choice(char *argv[], t_data *data)
 {
-	t_win  window;
-	t_img  image;
-
-	if (!(check_arg(argc,argv)))
+	if (!ft_strncmp(argv[1], "m", 2) || !ft_strncmp(argv[1], "mendelbrot", 11))
 	{
-		image = create_window(&window);
-		mlx_key_hook(window.win_ptr, &read_keys, &image);
-		mlx_mouse_hook(window.win_ptr, &read_mouse, &image);
-		mlx_hook(window.win_ptr, 17, 0, exit_window, &image);
-		init_mandelbrot(&image);
-		mandelbrot(&image);
-		mlx_put_image_to_window(window.mlx_ptr, window.win_ptr, image.img_ptr, 0, 0);
-		mlx_loop(window.mlx_ptr);
+		init_mandelbrot(data);
+		mandelbrot(data, 0.0, 0.0, 0);
+	}
+}
+
+int	main(int argc, char *argv[])
+{
+	t_data	data;
+
+	if (!(check_arg(argc, argv)))
+	{
+		data = create_window();
+		mlx_key_hook(data.win_ptr, &read_keys, &data);
+		mlx_mouse_hook(data.win_ptr, &read_mouse, &data);
+		mlx_hook(data.win_ptr, 17, 0, exit_window, &data);
+		fractal_choice(argv, &data);
+		mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img_ptr, 0, 0);
+		mlx_loop(data.mlx_ptr);
 	}
 	return (0);
 }

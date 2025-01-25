@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:24:51 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/24 17:51:41 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/25 07:19:42 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	read_keys(int key_pressed, void *param)
 {
-	t_img	*img;
+	t_data	*data;
 
-	img = (t_img *)param;
-	if (key_pressed == ESC || !img)
-		exit_window(img);
+	data = (t_data *)param;
+	if (key_pressed == ESC || !data)
+		exit_window(data);
 	else
 		return (-1);
 	return (0);
@@ -26,14 +26,14 @@ int	read_keys(int key_pressed, void *param)
 
 int	read_mouse(int button, int mouse_x, int mouse_y, void *param)
 {
-	t_img	*img;
-	
-	img = (t_img *) param;
+	t_data	*data;
+
+	data = (t_data *) param;
 	(void)mouse_x;
 	(void)mouse_y;
 	if (button == ZOOM_UP)
-		zoom_in(img, 1.9, 550.21, 492.12);
-	mandelbrot(img);
-	mlx_put_image_to_window(img->win->mlx_ptr, img->win->win_ptr, img->img_ptr, 0, 0);
+		zoom_in(data, 2, mouse_x, mouse_y);
+	mandelbrot(data);
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0, 0);
 	return (0);
 }

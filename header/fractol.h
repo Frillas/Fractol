@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:28:57 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/24 17:31:32 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/25 11:15:51 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,41 +25,37 @@
 #define DOWN 65364// "DOWN"
 #define RAND_COLOR 114 // "r"
 
-typedef struct s_win
-{ 
-    void    *mlx_ptr;
-    void    *win_ptr;
-}   t_win;
-
-typedef struct s_img
+typedef struct s_data
 {   
-    t_win   *win;
-    void    *img_ptr;
-    char    *data;
-    int     h;
-    int     w;
-    int     bpp;
-    int     endian;
-    int     line_len;
-	double	x1;
-	double	x2;
-	double	y1;
-	double	y2;
-	double	zoom;
-	unsigned int	it_max;
-} t_img;
+    void	*mlx_ptr;
+    void	*win_ptr;
+    void	*img_ptr;
+    char	*addr;
+    int		h;
+    int		w;
+    int		bpp;
+    int		endian;
+    int		line_len;
+	float	x1;
+	float	x2;
+	float	y1;
+	float	y2;
+	float	zoom;
+	int		it_max;
+} t_data;
 //window.c
-t_img	create_window(t_win *window);
-int		exit_window(t_img *image);
+t_data	create_window(void);
+int		exit_window(t_data *data);
 //keys.c
 int     read_keys(int key_pressed, void *param);
 int		read_mouse(int button, int mouse_x, int mouse_y, void *param);
 //mandelbrot.c
-void	mandelbrot(t_img *img);
-void    init_mandelbrot(t_img *img);
-void	zoom_in(t_img *img, double factor, double mouse_x, double mouse_y);
+void	mandelbrot(t_data *data, float c_r, float c_i, unsigned int i);
+void    init_mandelbrot(t_data *data);
+void	zoom_in(t_data *data, double factor, double mouse_x, double mouse_y);
 //parsing.c
 int		check_arg(int argc, char *argv[]);
 //tools.c
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+void	img_pix_put(t_data *data, int x, int y, int color);
 #endif

@@ -6,49 +6,45 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:22:40 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/24 17:06:16 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/25 07:09:48 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/fractol.h"
 
-t_img   new_img(int w, int h, t_win *window)
+void	new_img(int w, int h, t_data *data)
 {
-    t_img   image;
-
-    image.win = window;
-    image.img_ptr = mlx_new_image(window->mlx_ptr, w, h);
-    if (image.img_ptr == NULL)
-        exit_window(&image);
-    image.data = mlx_get_data_addr(image.img_ptr, &(image.bpp),
-        &(image.line_len), &(image.endian));
-    image.w = w;
-    image.h = h;
-    return (image);
+	data->img_ptr = mlx_new_image(data->mlx_ptr, w, h);
+	if (data->img_ptr == NULL)
+		exit_window(data);
+	data->addr = mlx_get_data_addr(data->img_ptr, &(data->bpp),
+			&(data->line_len), &(data->endian));
+	data->w = w;
+	data->h = h;
 }
 
-t_img	create_window(t_win *window)
+t_data	create_window(void)
 {
-	t_img	image;
+	t_data	data;
 
-	window->mlx_ptr = mlx_init();
-	if (window->mlx_ptr == NULL)
+	data.mlx_ptr = mlx_init();
+	if (data.mlx_ptr == NULL)
 		exit (EXIT_FAILURE);
-	window->win_ptr = mlx_new_window(window->mlx_ptr, 1170, 1080, "FRACTOL");
-	if (window->win_ptr == NULL)
+	data.win_ptr = mlx_new_window(data.mlx_ptr, 780, 720, "FRACTOL");
+	if (data.win_ptr == NULL)
 	{
-		free(window->mlx_ptr);
+		free(data.mlx_ptr);
 		exit(EXIT_FAILURE);
 	}
-	image = new_img(1170, 1080, window);
-	return (image);
+	new_img(780, 720, &data);
+	return (data);
 }
 
-int	exit_window(t_img *image)
+int	exit_window(t_data *data)
 {
-	mlx_destroy_image(image->win->mlx_ptr, image->img_ptr);
-	mlx_destroy_window(image->win->mlx_ptr, image->win->win_ptr);
-	mlx_destroy_display(image->win->mlx_ptr);
-	free(image->win->mlx_ptr);
+	mlx_destroy_image(data->mlx_ptr, data->img_ptr);
+	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+	mlx_destroy_display(data->mlx_ptr);
+	free(data->mlx_ptr);
 	exit(EXIT_SUCCESS);
 }

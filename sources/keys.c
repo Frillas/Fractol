@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:24:51 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/25 07:19:42 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/25 11:24:41 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ int	read_mouse(int button, int mouse_x, int mouse_y, void *param)
 	(void)mouse_y;
 	if (button == ZOOM_UP)
 		zoom_in(data, 2, mouse_x, mouse_y);
-	mandelbrot(data);
+	else if (button == ZOOM_DOWN)
+		zoom_in(data, 0.5, mouse_x, mouse_y);
+	mandelbrot(data, 0.0, 0.0, 0);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0, 0);
 	return (0);
 }

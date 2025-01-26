@@ -6,11 +6,12 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 06:56:16 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/25 10:28:53 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/26 17:55:12 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/fractol.h"
+#include <stdio.h>
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
@@ -33,4 +34,18 @@ void	img_pix_put(t_data *data, int x, int y, int color)
 
 	pixel = data->addr + (y * data->line_len + x * (data->bpp / 8));
 	*(unsigned int *)pixel = color;
+}
+
+unsigned int	get_color(unsigned int i, unsigned int it_max)
+{
+	float			t;
+	unsigned int	r;
+	unsigned int	g;
+	unsigned int	b;
+
+	t = ((float)i / it_max) + 0.03;
+	r = (9 * (1 - t) * t * 255);
+	g = (15 * (1 - t) * (1 - t) * t * t * 255);
+	b = (8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
+	return ((r << 16) | (g << 8) | b);
 }

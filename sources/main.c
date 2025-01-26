@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:18:53 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/25 11:16:59 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/26 19:20:34 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ void	fractal_choice(char *argv[], t_data *data)
 	{
 		init_mandelbrot(data);
 		mandelbrot(data, 0.0, 0.0, 0);
+	}
+	else if (!ft_strncmp(argv[1], "j", 2) || !ft_strncmp(argv[1], "julia", 6))
+	{
+		julia(data, 0);
 	}
 }
 

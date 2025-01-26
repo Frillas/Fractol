@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:39:23 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/25 11:18:50 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/26 16:51:33 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	zoom_in(t_data *data, double factor, double mouse_x, double mouse_y)
 	float	center_x;
 	float	center_y;
 
-	data->it_max += 100 ;
+	data->it_max += 10;
 	range_x = data->x2 - data->x1;
 	range_y = data->y2 - data->y1;
 	center_x = data->x1 + mouse_x / data->zoom;
@@ -37,7 +37,7 @@ void	init_mandelbrot(t_data *data)
 	data->x2 = 0.6;
 	data->y1 = -1.2;
 	data->y2 = 1.2;
-	data->it_max = 200;
+	data->it_max = 300;
 	data->zoom = 300;
 }
 
@@ -82,7 +82,7 @@ void	mandelbrot(t_data *data, float c_r, float c_i, unsigned int i)
 			if (i == data->it_max)
 				img_pix_put(data, x, y, 0x000000);
 			else
-				img_pix_put(data, x, y, i * 258);
+				img_pix_put(data, x, y, get_color(i, data->it_max));
 			y++;
 		}
 		x++;

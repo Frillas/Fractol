@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:28:57 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/25 11:15:51 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/26 19:10:47 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <stdlib.h>
 
 #define ZOOM_UP 4 
+#define ZOOM_DOWN 5 
 #define ESC 65307 //"escape"
 #define ENTER 65293 // "enter"
 #define FOLLOW 102 // "f"
@@ -44,18 +45,21 @@ typedef struct s_data
 	int		it_max;
 } t_data;
 //window.c
-t_data	create_window(void);
-int		exit_window(t_data *data);
+t_data			create_window(void);
+int				exit_window(t_data *data);
 //keys.c
-int     read_keys(int key_pressed, void *param);
-int		read_mouse(int button, int mouse_x, int mouse_y, void *param);
+int     		read_keys(int key_pressed, void *param);
+int				read_mouse(int button, int mouse_x, int mouse_y, void *param);
 //mandelbrot.c
-void	mandelbrot(t_data *data, float c_r, float c_i, unsigned int i);
-void    init_mandelbrot(t_data *data);
-void	zoom_in(t_data *data, double factor, double mouse_x, double mouse_y);
+void			mandelbrot(t_data *data, float c_r, float c_i, unsigned int i);
+void    		init_mandelbrot(t_data *data);
+void			zoom_in(t_data *data, double factor, double mouse_x, double mouse_y);
+//julia.c
+void			julia(t_data *data, unsigned int i);
 //parsing.c
-int		check_arg(int argc, char *argv[]);
+int				check_arg(int argc, char *argv[]);
 //tools.c
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-void	img_pix_put(t_data *data, int x, int y, int color);
+int				ft_strncmp(const char *s1, const char *s2, size_t n);
+void			img_pix_put(t_data *data, int x, int y, int color);
+unsigned int	get_color(unsigned int i, unsigned int it_max);
 #endif

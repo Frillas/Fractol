@@ -6,30 +6,11 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:39:23 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/26 16:51:33 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/27 11:09:49 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/fractol.h"
-
-void	zoom_in(t_data *data, double factor, double mouse_x, double mouse_y)
-{
-	float	range_x;
-	float	range_y;
-	float	center_x;
-	float	center_y;
-
-	data->it_max += 10;
-	range_x = data->x2 - data->x1;
-	range_y = data->y2 - data->y1;
-	center_x = data->x1 + mouse_x / data->zoom;
-	center_y = data->y1 + mouse_y / data->zoom;
-	data->x1 = center_x - (range_x / factor) / 2.0;
-	data->x2 = center_x + (range_x / factor) / 2.0;
-	data->y1 = center_y - (range_y / factor) / 2.0;
-	data->y2 = center_y + (range_y / factor) / 2.0;
-	data->zoom *= factor;
-}
 
 void	init_mandelbrot(t_data *data)
 {
@@ -37,7 +18,7 @@ void	init_mandelbrot(t_data *data)
 	data->x2 = 0.6;
 	data->y1 = -1.2;
 	data->y2 = 1.2;
-	data->it_max = 300;
+	data->it_max = 400;
 	data->zoom = 300;
 }
 

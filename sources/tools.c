@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 06:56:16 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/26 17:55:12 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/27 12:15:22 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,32 @@ unsigned int	get_color(unsigned int i, unsigned int it_max)
 	g = (15 * (1 - t) * (1 - t) * t * t * 255);
 	b = (8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
 	return ((r << 16) | (g << 8) | b);
+}
+
+void    zoom(t_data *data, double factor, double mouse_x, double mouse_y)
+{
+    float   range_x;
+    float   range_y;
+    float   center_x;
+    float   center_y;
+
+    data->it_max += 10;
+    range_x = data->x2 - data->x1;
+    range_y = data->y2 - data->y1;
+    center_x = data->x1 + mouse_x / data->zoom;
+    center_y = data->y1 + mouse_y / data->zoom;
+    data->x1 = center_x - (range_x / factor) / 2.0;
+    data->x2 = center_x + (range_x / factor) / 2.0;
+    data->y1 = center_y - (range_y / factor) / 2.0;
+    data->y2 = center_y + (range_y / factor) / 2.0;
+    data->zoom *= factor;
+	fract_reload(data);
+}
+
+void	fract_reload(t_data *data)
+{
+	if (data->fract_choice == 1)
+		mandelbrot(data, 0.0, 0.0, 0);
+	if (data->fract_choice == 2)
+		julia(data, 0.0, 0.0, 0);
 }

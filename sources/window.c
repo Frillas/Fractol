@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:22:40 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/25 07:09:48 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/27 17:03:05 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,31 @@ int	exit_window(t_data *data)
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
 	exit(EXIT_SUCCESS);
+}
+
+void	zoom(t_data *data, double factor, double mouse_x, double mouse_y)
+{
+	float	range_x;
+	float	range_y;
+	float	center_x;
+	float	center_y;
+
+	range_x = data->x2 - data->x1;
+	range_y = data->y2 - data->y1;
+	center_x = data->x1 + mouse_x / data->zoom;
+	center_y = data->y1 + mouse_y / data->zoom;
+	data->x1 = center_x - (range_x / factor) / 2.0;
+	data->x2 = center_x + (range_x / factor) / 2.0;
+	data->y1 = center_y - (range_y / factor) / 2.0;
+	data->y2 = center_y + (range_y / factor) / 2.0;
+	data->zoom *= factor;
+	fract_reload(data);
+}
+
+void	fract_reload(t_data *data)
+{
+	if (data->fract_choice == 1)
+		mandelbrot(data, 0.0, 0.0, 0);
+	if (data->fract_choice == 2)
+		julia(data, 0.0, 0.0, 0);
 }

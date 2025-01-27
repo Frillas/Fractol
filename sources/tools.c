@@ -6,12 +6,11 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 06:56:16 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/27 12:15:22 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/27 17:54:06 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/fractol.h"
-#include <stdio.h>
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
@@ -44,36 +43,67 @@ unsigned int	get_color(unsigned int i, unsigned int it_max)
 	unsigned int	b;
 
 	t = ((float)i / it_max) + 0.03;
-	r = (9 * (1 - t) * t * 255);
+	r = (9 * (1 - t) * t * t * t * 255);
 	g = (15 * (1 - t) * (1 - t) * t * t * 255);
 	b = (8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
 	return ((r << 16) | (g << 8) | b);
 }
 
-void    zoom(t_data *data, double factor, double mouse_x, double mouse_y)
+t_bool	ft_atof_valid(const char *s, float *value, t_bool res)
 {
-    float   range_x;
-    float   range_y;
-    float   center_x;
-    float   center_y;
+	int		i;
+	int		sign;
+	float	number;
 
-    data->it_max += 10;
-    range_x = data->x2 - data->x1;
-    range_y = data->y2 - data->y1;
-    center_x = data->x1 + mouse_x / data->zoom;
-    center_y = data->y1 + mouse_y / data->zoom;
-    data->x1 = center_x - (range_x / factor) / 2.0;
-    data->x2 = center_x + (range_x / factor) / 2.0;
-    data->y1 = center_y - (range_y / factor) / 2.0;
-    data->y2 = center_y + (range_y / factor) / 2.0;
-    data->zoom *= factor;
-	fract_reload(data);
+	i = 0;
+	sign = 1;
+	number = 0;
+	res = FALSE;
+	while (s[i] == ' ' || (s[i] >= '\t' && s[i] <= '\r'))
+		i++;
+	if (s[i] == '+' || s[i] == '-')
+	{
+		if (s[i] == '-')
+			sign = sign * (-1);
+		i++;
+	}
+	if (s[i] >= '0' && s[i] <= '2')
+	{
+		*value = s[i++] - '0';
+		if (s[i] == '\0')
+			return (TRUE);
+	}
+	if (s[i] == '.')
+	{
+		res = TRUE;
+		i++;
+	}
+	while ((s[i] >= '0' && s[i] <= '9') && (res == TRUE))
+	{
+		number = (number * 10) + (s[i++] - '0');
+		if (number < 0)
+			return (FALSE);
+	}
+	while ((number > 1) && (res == TRUE))
+		number = number / 10;
+	*value = (*value + number) * sign;
+	if ((res == TRUE) && (s[i] == '\0'));
+		return (TRUE);
+	return (FALSE);
 }
 
-void	fract_reload(t_data *data)
+void	ft_free(char **result)
 {
-	if (data->fract_choice == 1)
-		mandelbrot(data, 0.0, 0.0, 0);
-	if (data->fract_choice == 2)
-		julia(data, 0.0, 0.0, 0);
+	int		i;
+	
+	i = 0;
+	if (result != NULL)
+	{
+		while (result[i])
+		{
+			free(result[i]);
+			i++;
+		}
+		free(result);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:28:57 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/27 10:50:06 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/27 17:01:57 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_data
 //window.c
 t_data			create_window(void);
 int				exit_window(t_data *data);
+void			zoom(t_data *data, double factor, double x, double y);
 //keys.c
 int				read_keys(int key_pressed, void *param);
 int				read_mouse(int button, int mouse_x, int mouse_y, void *param);
@@ -63,6 +64,7 @@ int				check_arg(int argc, char *argv[]);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 void			img_pix_put(t_data *data, int x, int y, int color);
 unsigned int	get_color(unsigned int i, unsigned int it_max);
-void			zoom(t_data *data, double factor, double x, double y);
 void			fract_reload(t_data *data);
+//error.c
+void			handle_error(void);
 #endif

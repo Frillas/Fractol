@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:45:34 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/28 12:43:03 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/28 18:03:22 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	add_number(float value, t_data *data)
 {
-	static int i;
+	static int	i;
 
 	if (i == 0)
-	{	
+	{
 		data->c_r = value;
 		i++;
 		return ;
@@ -40,16 +40,16 @@ void	build_args(char **numbers, t_data *data)
 	while (numbers[i] != NULL)
 	{
 		value = 0;
-		res = ft_atof_valid(numbers[i], &value, res);
-		if (!res || ((value > 2.0) || (value < -2.0)))
+		res = ft_atof_valid(numbers[i], &value, res, 0);
+		if (!res || ((value > 2.0) || (value < -2.0)) || i > 1)
 		{
 			ft_free(numbers);
 			handle_error();
 		}
 		add_number(value, data);
-		free(numbers[i]);
 		i++;
 	}
+	ft_free(numbers);
 }
 
 void	parsing(int argc, char *argv[], t_data *data)
@@ -72,7 +72,6 @@ void	parsing(int argc, char *argv[], t_data *data)
 			exit(EXIT_FAILURE);
 		}
 		build_args(numbers, data);
-		free(numbers);
 		i++;
 	}
 }
@@ -81,10 +80,10 @@ int	check_arg(int argc, char *argv[], t_data *data)
 {
 	if (argc == 1)
 		handle_error();
-	else if ((argc > 2 && argc <= 4) && (!ft_strncmp(argv[1], "j", 2) 
+	else if ((argc > 2 && argc <= 4) && (!ft_strncmp(argv[1], "j", 2)
 			|| !ft_strncmp(argv[1], "julia", 6)))
 	{
-		parsing(argc, argv, data);	
+		parsing(argc, argv, data);
 		return (0);
 	}
 	else if (argc == 2 && (!ft_strncmp(argv[1], "m", 2)

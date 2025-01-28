@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 06:56:16 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/28 12:33:55 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/28 18:04:07 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,69 +49,10 @@ unsigned int	get_color(unsigned int i, unsigned int it_max)
 	return ((r << 16) | (g << 8) | b);
 }
 
-t_bool	ft_atof_valid(const char *s, float *value, t_bool res)
-{
-	int		i;
-	int		sign;
-	int		div;
-	float	number;
-
-	i = 0;
-	sign = 1;
-	number = 0;
-	res = FALSE;
-	div = 0;
-	while (s[i] == ' ' || (s[i] >= '\t' && s[i] <= '\r'))
-		i++;
-	if (s[i] == '+' || s[i] == '-')
-	{
-		if (s[i] == '-')
-			sign = sign * (-1);
-		i++;
-	}
-	if (s[i] >= '0' && s[i] <= '2')
-	{
-		*value = s[i++] - '0';
-		if (s[i] == '\0')
-			return (TRUE);
-	}
-	else
-		return (FALSE);
-	if (s[i] == '.' && (s[i + 1] >= '0' && s[i + 1] <= '9'))
-	{
-		res = TRUE;
-		i++;
-	}
-	while ((s[i] >= '0' && s[i] <= '9') && (res == TRUE))
-	{
-		number = (number * 10) + (s[i++] - '0');
-		if (number == 0)
-			div++;
-		if (number < 0 || number > 2417483646 || *value >= 2)
-			return (FALSE);
-	}
-	if (s[i] != '\0')
-		return (FALSE);
-	while ((number >= 1) && (res == TRUE) || (div > 0))
-	{
-		if (number >= 1)
-			number = number / 10;
-		if (div > 0)
-		{	
-			number = number / 10;
-			div--;
-		}
-	}
-	*value = (*value + number) * sign;
-	if ((res == TRUE) && (s[i] == '\0'));
-		return (TRUE);
-	return (FALSE);
-}
-
 void	ft_free(char **result)
 {
 	int		i;
-	
+
 	i = 0;
 	if (result != NULL)
 	{

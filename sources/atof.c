@@ -1,0 +1,79 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   atof.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/28 17:35:58 by aroullea          #+#    #+#             */
+/*   Updated: 2025/01/28 18:02:23 by aroullea         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../header/fractol.h"
+
+static int	number_sign(char s, int *i)
+{
+	int	sign;
+
+	sign = 1;
+	if (s == '+' || s == '-')
+	{
+		if (s[i] == '-')
+			sign = -1;
+		*i++;
+	}
+	return (sign);
+}
+
+static float	convert_number(char *s, int *j, t_bool *res)
+{
+	float	div;
+	int		i;
+	float	number;
+
+	i = *j;
+	div = 10;
+	number = 0;
+	if (s[i] == '.')
+	{
+		i++;
+		while (s[i] >= '0' && s[i] <= '9')
+		{
+			*res = TRUE;
+			number = number + ((s[i] - '0') / div);
+			div *= 10;
+			i++;
+		}
+	}
+	*j = i;
+	return (number);
+}
+
+t_bool	ft_atof_valid(const char *s, float *value, t_bool res, int i)
+{
+	int		sign;
+	float	number;
+
+	sign = 1;
+	number = 0;
+	res = FALSE;
+	while (s[i] == ' ' || (s[i] >= '\t' && s[i] <= '\r'))
+		i++;
+	sign = number_sign(s[i], &i);
+	if (s[i] >= '0' && s[i] <= '2')
+	{
+		*value = s[i++] - '0';
+		if (s[i] == '\0')
+			return (TRUE);
+	}
+	number = convert_number(s, &i, &res);
+	if (s[i] != '\0')
+		return (FALSE);
+	if (res == TRUE)
+	{
+		*value = (*value + number) * sign;
+		return (TRUE);
+	}
+	return (FALSE);
+}

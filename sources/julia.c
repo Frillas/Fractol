@@ -6,7 +6,7 @@
 /*   By: aroullea <aroullea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 18:15:58 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/28 12:08:06 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/28 18:21:35 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 void	init_julia(t_data *data)
 {
-	data->x1 = -2.0;
-	data->x2 = 0.6;
+	data->x1 = -1.5;
+	data->x2 = 1.1;
 	data->y1 = -1.2;
 	data->y2 = 1.2;
 	data->it_max = 300;
 	data->zoom = 300;
 }
 
-unsigned int	calc_julia(float z_r, float z_i, t_data *data)
+unsigned int	calc_julia(double z_r, double z_i, t_data *data)
 {
 	unsigned int	i;
-	float			tmp;
+	double			tmp;
 
 	i = 0;
 	while (((z_r * z_r) + (z_i * z_i) < 4) && (i < data->it_max))
@@ -38,11 +38,11 @@ unsigned int	calc_julia(float z_r, float z_i, t_data *data)
 	return (i);
 }
 
-void	julia(t_data *data, float z_r, float z_i, unsigned int i)
+void	julia(t_data *data, double z_r, double z_i, unsigned int i)
 {
-	float			image_x;
-	float			image_y;
-	float			tmp;
+	double			image_x;
+	double			image_y;
+	double			tmp;
 	unsigned int	x;
 	unsigned int	y;
 

@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:39:23 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/27 16:21:52 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/28 18:21:04 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ void	init_mandelbrot(t_data *data)
 	data->zoom = 300;
 }
 
-unsigned int	calc_mendelbrot(float c_r, float c_i, t_data *data)
+unsigned int	calc_mendelbrot(double c_r, double c_i, t_data *data)
 {
 	unsigned int	i;
-	float			tmp;
-	float			z_r;
-	float			z_i;
+	double			tmp;
+	double			z_r;
+	double			z_i;
 
 	z_r = 0;
 	z_i = 0;
@@ -42,10 +42,10 @@ unsigned int	calc_mendelbrot(float c_r, float c_i, t_data *data)
 	return (i);
 }
 
-void	mandelbrot(t_data *data, float c_r, float c_i, unsigned int i)
+void	mandelbrot(t_data *data, double c_r, double c_i, unsigned int i)
 {
-	float			image_x;
-	float			image_y;
+	double			image_x;
+	double			image_y;
 	unsigned int	x;
 	unsigned int	y;
 

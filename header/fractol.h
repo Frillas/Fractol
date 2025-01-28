@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:28:57 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/28 17:58:55 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/28 18:22:57 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,7 @@
 
 # define ZOOM_UP 4 
 # define ZOOM_DOWN 5 
-# define ESC 65307 //"escape"
-# define ENTER 65293 // "enter"
-# define FOLLOW 102 // "f"
-# define COLOR 99 // "c"
-# define UP 65362 // "UP"
-# define DOWN 65364// "DOWN"
-# define RAND_COLOR 114 // "r"
+# define ESC 65307 
 
 typedef struct s_data
 {
@@ -38,15 +32,15 @@ typedef struct s_data
 	int		bpp;
 	int		endian;
 	int		line_len;
-	float	x1;
-	float	x2;
-	float	y1;
-	float	y2;
-	float	zoom;
+	double	x1;
+	double	x2;
+	double	y1;
+	double	y2;
+	double	zoom;
 	int		it_max;
 	int		fract_choice;
-	float	c_r;
-	float	c_i;
+	double	c_r;
+	double	c_i;
 }	t_data;
 //window.c
 void			create_window(t_data *data);
@@ -57,10 +51,10 @@ void			fract_reload(t_data *data);
 int				read_keys(int key_pressed, void *param);
 int				read_mouse(int button, int mouse_x, int mouse_y, void *param);
 //mandelbrot.c
-void			mandelbrot(t_data *data, float c_r, float c_i, unsigned int i);
+void			mandelbrot(t_data *data, double c_r, double c_i, unsigned int i);
 void			init_mandelbrot(t_data *data);
 //julia.c
-void			julia(t_data *data, float z_r, float z_i, unsigned int i);
+void			julia(t_data *data, double z_r, double z_i, unsigned int i);
 void			init_julia(t_data *data);
 //parsing.c
 int				check_arg(int argc, char *argv[], t_data *data);

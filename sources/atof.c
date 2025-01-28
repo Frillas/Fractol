@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:35:58 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/28 18:02:23 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/28 18:19:59 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ static int	number_sign(char s, int *i)
 	return (sign);
 }
 
-static float	convert_number(char *s, int *j, t_bool *res)
+static double	convert_number(char *s, int *j, t_bool *res)
 {
-	float	div;
+	double	div;
 	int		i;
-	float	number;
+	double	number;
 
 	i = *j;
 	div = 10;
@@ -53,7 +53,7 @@ static float	convert_number(char *s, int *j, t_bool *res)
 t_bool	ft_atof_valid(const char *s, float *value, t_bool res, int i)
 {
 	int		sign;
-	float	number;
+	double	number;
 
 	sign = 1;
 	number = 0;

@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:22:40 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/27 17:03:05 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/28 11:07:58 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,18 @@ void	new_img(int w, int h, t_data *data)
 	data->h = h;
 }
 
-t_data	create_window(void)
+void	create_window(t_data *data)
 {
-	t_data	data;
-
-	data.mlx_ptr = mlx_init();
-	if (data.mlx_ptr == NULL)
+	data->mlx_ptr = mlx_init();
+	if (data->mlx_ptr == NULL)
 		exit (EXIT_FAILURE);
-	data.win_ptr = mlx_new_window(data.mlx_ptr, 780, 720, "FRACTOL");
-	if (data.win_ptr == NULL)
+	data->win_ptr = mlx_new_window(data->mlx_ptr, 780, 720, "FRACTOL");
+	if (data->win_ptr == NULL)
 	{
-		free(data.mlx_ptr);
+		free(data->mlx_ptr);
 		exit(EXIT_FAILURE);
 	}
-	new_img(780, 720, &data);
-	return (data);
+	new_img(780, 720, data);
 }
 
 int	exit_window(t_data *data)

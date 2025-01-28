@@ -6,7 +6,7 @@
 /*   By: aroullea <aroullea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 18:15:58 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/27 12:20:09 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/28 12:08:06 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,13 @@ unsigned int	calc_julia(float z_r, float z_i, t_data *data)
 {
 	unsigned int	i;
 	float			tmp;
-	float			c_r;
-	float			c_i;
 
 	i = 0;
-	c_r = 0.285;
-	c_i = 0.013;
 	while (((z_r * z_r) + (z_i * z_i) < 4) && (i < data->it_max))
 	{
 		tmp = z_r;
-		z_r = z_r * z_r - z_i * z_i + c_r;
-		z_i = 2 * z_i * tmp + c_i;
+		z_r = z_r * z_r - z_i * z_i + data->c_r;
+		z_i = 2 * z_i * tmp + data->c_i;
 		i++;
 	}
 	return (i);

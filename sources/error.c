@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 15:21:02 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/27 16:55:29 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/28 12:37:55 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,19 @@ void	handle_error(void)
 	exit(EXIT_FAILURE);
 }
 
-int	is_empty(char *argv[])
+int	is_empty(char *src)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
-	while (argv != NULL && argv[i] != NULL)
+	if (src != NULL)
 	{
-		if (argv[i][j] != ' ')
-			return (EXIT_SUCCESS);
+		while (src[i] != NULL)
+		{
+			if (src[i] != ' ')
+				return (EXIT_SUCCESS);
+			i++;
+		}
 	}
-	return (EXIT_FAILURE)
+	return (EXIT_FAILURE);
 }

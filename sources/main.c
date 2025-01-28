@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:18:53 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/27 15:38:38 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/28 11:18:07 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ int	main(int argc, char *argv[])
 {
 	t_data	data;
 
-	if (!(check_arg(argc, argv)))
+	if (!(check_arg(argc, argv, &data)))
 	{
-		data = create_window();
-		mlx_key_hook(data.win_ptr, &read_keys, &data);
+		create_window(&data);
+		mlx_key_hook(data.win_ptr, read_keys, &data);
 		mlx_mouse_hook(data.win_ptr, &read_mouse, &data);
 		mlx_hook(data.win_ptr, 17, 0, exit_window, &data);
 		fractal_choice(argv, &data);

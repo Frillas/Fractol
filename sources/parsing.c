@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:45:34 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/27 18:21:58 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/28 12:43:03 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,19 @@
 
 void	add_number(float value, t_data *data)
 {
-	
+	static int i;
+
+	if (i == 0)
+	{	
+		data->c_r = value;
+		i++;
+		return ;
+	}
+	if (i == 1)
+	{
+		data->c_i = value;
+		return ;
+	}
 }
 
 void	build_args(char **numbers, t_data *data)
@@ -28,13 +40,15 @@ void	build_args(char **numbers, t_data *data)
 	while (numbers[i] != NULL)
 	{
 		value = 0;
-		res = ft_atoi_valid(result[i], &value, res);
+		res = ft_atof_valid(numbers[i], &value, res);
 		if (!res || ((value > 2.0) || (value < -2.0)))
 		{
 			ft_free(numbers);
 			handle_error();
 		}
 		add_number(value, data);
+		free(numbers[i]);
+		i++;
 	}
 }
 
@@ -49,7 +63,7 @@ void	parsing(int argc, char *argv[], t_data *data)
 	res = FALSE;
 	while (i < argc)
 	{
-		if (!is_empty (argv[i]))
+		if (is_empty (argv[i]))
 			handle_error();
 		numbers = ft_split(argv[i], ' ');
 		if (numbers == NULL)
@@ -57,7 +71,9 @@ void	parsing(int argc, char *argv[], t_data *data)
 			write(2, "Split : memory allocation failed\n", 34);
 			exit(EXIT_FAILURE);
 		}
-		build_args(numbers);
+		build_args(numbers, data);
+		free(numbers);
+		i++;
 	}
 }
 

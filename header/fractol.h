@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:28:57 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/27 17:01:57 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/28 11:06:22 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <mlx.h>
 # include <stdlib.h>
+# include "type.h"
 
 # define ZOOM_UP 4 
 # define ZOOM_DOWN 5 
@@ -44,11 +45,14 @@ typedef struct s_data
 	float	zoom;
 	int		it_max;
 	int		fract_choice;
+	float	c_r;
+	float	c_i;
 }	t_data;
 //window.c
-t_data			create_window(void);
+void			create_window(t_data *data);
 int				exit_window(t_data *data);
 void			zoom(t_data *data, double factor, double x, double y);
+void			fract_reload(t_data *data);
 //keys.c
 int				read_keys(int key_pressed, void *param);
 int				read_mouse(int button, int mouse_x, int mouse_y, void *param);
@@ -59,12 +63,15 @@ void			init_mandelbrot(t_data *data);
 void			julia(t_data *data, float z_r, float z_i, unsigned int i);
 void			init_julia(t_data *data);
 //parsing.c
-int				check_arg(int argc, char *argv[]);
+int				check_arg(int argc, char *argv[], t_data *data);
 //tools.c
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 void			img_pix_put(t_data *data, int x, int y, int color);
 unsigned int	get_color(unsigned int i, unsigned int it_max);
-void			fract_reload(t_data *data);
+t_bool			ft_atof_valid(const char *s, float *value, t_bool res);
+void			ft_free(char **result);
 //error.c
 void			handle_error(void);
+//split.c
+char			**ft_split(char const *s, char c);
 #endif

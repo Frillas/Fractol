@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 06:56:16 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/27 17:54:06 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/28 12:33:55 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,14 @@ t_bool	ft_atof_valid(const char *s, float *value, t_bool res)
 {
 	int		i;
 	int		sign;
+	int		div;
 	float	number;
 
 	i = 0;
 	sign = 1;
 	number = 0;
 	res = FALSE;
+	div = 0;
 	while (s[i] == ' ' || (s[i] >= '\t' && s[i] <= '\r'))
 		i++;
 	if (s[i] == '+' || s[i] == '-')
@@ -73,7 +75,9 @@ t_bool	ft_atof_valid(const char *s, float *value, t_bool res)
 		if (s[i] == '\0')
 			return (TRUE);
 	}
-	if (s[i] == '.')
+	else
+		return (FALSE);
+	if (s[i] == '.' && (s[i + 1] >= '0' && s[i + 1] <= '9'))
 	{
 		res = TRUE;
 		i++;
@@ -81,11 +85,23 @@ t_bool	ft_atof_valid(const char *s, float *value, t_bool res)
 	while ((s[i] >= '0' && s[i] <= '9') && (res == TRUE))
 	{
 		number = (number * 10) + (s[i++] - '0');
-		if (number < 0)
+		if (number == 0)
+			div++;
+		if (number < 0 || number > 2417483646 || *value >= 2)
 			return (FALSE);
 	}
-	while ((number > 1) && (res == TRUE))
-		number = number / 10;
+	if (s[i] != '\0')
+		return (FALSE);
+	while ((number >= 1) && (res == TRUE) || (div > 0))
+	{
+		if (number >= 1)
+			number = number / 10;
+		if (div > 0)
+		{	
+			number = number / 10;
+			div--;
+		}
+	}
 	*value = (*value + number) * sign;
 	if ((res == TRUE) && (s[i] == '\0'));
 		return (TRUE);

@@ -7,10 +7,11 @@ IFLAGS = -Iminilibx/minilibx-linux
 LFLAGS = -Lminilibx/minilibx-linux
 OBJ_DIR = ./obj
 
-COMMOM_SRC = sources/keys.c sources/main.c sources/window.c sources/mandelbrot.c sources/parsing.c \
-			 sources/tools.c sources/julia.c sources/error.c sources/ft_split.c sources/atof.c 
-
-SRC = $(COMMOM_SRC)
+SRC = sources/loop/keys.c sources/loop/window.c \
+			 sources/fractal/mandelbrot.c sources/fractal/julia.c \
+			 sources/main/main.c sources/main/parsing.c \
+			 sources/utils/tools.c sources/utils/error.c \
+			 sources/utils/ft_split.c sources/utils/atof.c 
 
 OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
 
@@ -27,7 +28,7 @@ clean:
 	$(RM) -r $(OBJ_DIR)
 
 fclean: clean
-	$(RM) $(NAME) $(BONUS_NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 

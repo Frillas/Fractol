@@ -6,11 +6,11 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 06:56:35 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/28 10:23:17 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/29 11:21:00 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/fractol.h"
+#include "../../header/fractol.h"
 
 static int	ft_countwords(char const *s, char c)
 {

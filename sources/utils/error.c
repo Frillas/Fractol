@@ -6,11 +6,11 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 15:21:02 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/28 12:37:55 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/29 11:20:52 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/fractol.h"
+#include "../../header/fractol.h"
 
 void	handle_error(void)
 {

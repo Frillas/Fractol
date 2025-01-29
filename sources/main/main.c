@@ -6,11 +6,11 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:18:53 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/28 11:18:07 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/29 11:20:23 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/fractol.h"
+#include "../../header/fractol.h"
 
 void	fractal_choice(char *argv[], t_data *data)
 {

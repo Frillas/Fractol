@@ -1,48 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia.c                                            :+:      :+:    :+:   */
+/*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aroullea <aroullea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/26 18:15:58 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/28 18:21:35 by aroullea         ###   ########.fr       */
+/*   Created: 2025/01/23 14:39:23 by aroullea          #+#    #+#             */
+/*   Updated: 2025/01/29 11:19:50 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/fractol.h"
+#include "../../header/fractol.h"
 
-void	init_julia(t_data *data)
+void	init_mandelbrot(t_data *data)
 {
-	data->x1 = -1.5;
-	data->x2 = 1.1;
+	data->x1 = -2.0;
+	data->x2 = 0.6;
 	data->y1 = -1.2;
 	data->y2 = 1.2;
-	data->it_max = 300;
+	data->it_max = 100;
 	data->zoom = 300;
 }
 
-unsigned int	calc_julia(double z_r, double z_i, t_data *data)
+unsigned int	calc_mendelbrot(double c_r, double c_i, t_data *data)
 {
 	unsigned int	i;
 	double			tmp;
+	double			z_r;
+	double			z_i;
 
+	z_r = 0;
+	z_i = 0;
 	i = 0;
 	while (((z_r * z_r) + (z_i * z_i) < 4) && (i < data->it_max))
 	{
 		tmp = z_r;
-		z_r = z_r * z_r - z_i * z_i + data->c_r;
-		z_i = 2 * z_i * tmp + data->c_i;
+		z_r = z_r * z_r - z_i * z_i + c_r;
+		z_i = 2 * z_i * tmp + c_i;
 		i++;
 	}
 	return (i);
 }
 
-void	julia(t_data *data, double z_r, double z_i, unsigned int i)
+void	mandelbrot(t_data *data, double c_r, double c_i, unsigned int i)
 {
 	double			image_x;
 	double			image_y;
-	double			tmp;
 	unsigned int	x;
 	unsigned int	y;
 
@@ -52,11 +55,11 @@ void	julia(t_data *data, double z_r, double z_i, unsigned int i)
 	while (x < image_x)
 	{
 		y = 0;
+		c_r = x / data->zoom + data->x1;
 		while (y < image_y)
 		{
-			z_r = x / data->zoom + data->x1;
-			z_i = y / data->zoom + data->y1;
-			i = calc_julia(z_r, z_i, data);
+			c_i = y / data->zoom + data->y1;
+			i = calc_mendelbrot(c_r, c_i, data);
 			if (i == data->it_max)
 				img_pix_put(data, x, y, 0x000000);
 			else

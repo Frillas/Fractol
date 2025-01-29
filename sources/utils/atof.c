@@ -6,11 +6,11 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:35:58 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/28 18:19:59 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/29 11:20:43 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/fractol.h"
+#include "../../header/fractol.h"
 
 static int	number_sign(char s, int *i)
 {

@@ -6,11 +6,11 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:45:34 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/28 18:03:22 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/29 11:29:41 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/fractol.h"
+#include "../../header/fractol.h"
 
 void	add_number(float value, t_data *data)
 {
@@ -29,7 +29,7 @@ void	add_number(float value, t_data *data)
 	}
 }
 
-void	build_args(char **numbers, t_data *data)
+void	build_args(char **numbers, t_data *data, int argc)
 {
 	int		i;
 	float	value;
@@ -48,6 +48,11 @@ void	build_args(char **numbers, t_data *data)
 		}
 		add_number(value, data);
 		i++;
+	}
+	if (argc == 3 && numbers[1] == NULL)
+	{
+		ft_free(numbers);
+		handle_error();
 	}
 	ft_free(numbers);
 }
@@ -71,7 +76,7 @@ void	parsing(int argc, char *argv[], t_data *data)
 			write(2, "Split : memory allocation failed\n", 34);
 			exit(EXIT_FAILURE);
 		}
-		build_args(numbers, data);
+		build_args(numbers, data, argc);
 		i++;
 	}
 }

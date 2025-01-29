@@ -6,11 +6,11 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:24:51 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/28 10:16:14 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/29 11:19:59 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/fractol.h"
+#include "../../header/fractol.h"
 
 int	read_keys(int key_pressed, void *param)
 {

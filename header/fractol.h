@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:28:57 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/28 18:22:57 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/29 11:32:00 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void			fract_reload(t_data *data);
 int				read_keys(int key_pressed, void *param);
 int				read_mouse(int button, int mouse_x, int mouse_y, void *param);
 //mandelbrot.c
-void			mandelbrot(t_data *data, double c_r, double c_i, unsigned int i);
+void			mandelbrot(t_data *d, double c_r, double c_i, unsigned int i);
 void			init_mandelbrot(t_data *data);
 //julia.c
 void			julia(t_data *data, double z_r, double z_i, unsigned int i);

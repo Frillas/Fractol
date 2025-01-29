@@ -6,7 +6,7 @@
 /*   By: aroullea <aroullea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 18:15:58 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/29 12:16:55 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/29 13:32:30 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	julia(t_data *data, double z_r, double z_i, unsigned int i)
 		while (y < image_y)
 		{
 			z_r = x / data->zoom + data->x1;
-			z_i = y / data->zoom + data->y1;
+			z_i = (image_y - y) / data->zoom + data->y1;
 			i = calc_julia(z_r, z_i, data);
 			if (i == data->it_max)
 				img_pix_put(data, x, y, 0x000000);

@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:28:57 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/29 11:32:00 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/29 12:24:36 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <mlx.h>
 # include <stdlib.h>
+# include <unistd.h>
 # include "type.h"
 
 # define ZOOM_UP 4 
@@ -23,24 +24,24 @@
 
 typedef struct s_data
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	void	*img_ptr;
-	char	*addr;
-	int		h;
-	int		w;
-	int		bpp;
-	int		endian;
-	int		line_len;
-	double	x1;
-	double	x2;
-	double	y1;
-	double	y2;
-	double	zoom;
-	int		it_max;
-	int		fract_choice;
-	double	c_r;
-	double	c_i;
+	void			*mlx_ptr;
+	void			*win_ptr;
+	void			*img_ptr;
+	char			*addr;
+	int				h;
+	int				w;
+	int				bpp;
+	int				endian;
+	int				line_len;
+	double			x1;
+	double			x2;
+	double			y1;
+	double			y2;
+	double			zoom;
+	unsigned int	it_max;
+	int				fract_choice;
+	double			c_r;
+	double			c_i;
 }	t_data;
 //window.c
 void			create_window(t_data *data);
@@ -66,6 +67,7 @@ t_bool			ft_atof_valid(const char *s, float *value, t_bool res, int i);
 void			ft_free(char **result);
 //error.c
 void			handle_error(void);
+int				is_empty(char *src);
 //split.c
 char			**ft_split(char const *s, char c);
 #endif

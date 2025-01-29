@@ -6,7 +6,7 @@
 /*   By: aroullea <aroullea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 18:15:58 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/29 11:19:43 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/29 12:16:55 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	julia(t_data *data, double z_r, double z_i, unsigned int i)
 {
 	double			image_x;
 	double			image_y;
-	double			tmp;
 	unsigned int	x;
 	unsigned int	y;
 

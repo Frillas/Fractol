@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 15:21:02 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/29 11:20:52 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/29 12:21:24 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	is_empty(char *src)
 	i = 0;
 	if (src != NULL)
 	{
-		while (src[i] != NULL)
+		while (src[i] != '\0')
 		{
 			if (src[i] != ' ')
 				return (EXIT_SUCCESS);

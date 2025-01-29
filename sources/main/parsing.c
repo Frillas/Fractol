@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:45:34 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/29 11:29:41 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/29 12:19:10 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	build_args(char **numbers, t_data *data, int argc)
 void	parsing(int argc, char *argv[], t_data *data)
 {
 	int		i;
-	int		value;
 	char	**numbers;
 	t_bool	res;
 
@@ -96,4 +95,5 @@ int	check_arg(int argc, char *argv[], t_data *data)
 		return (0);
 	else
 		handle_error();
+	return (1);
 }

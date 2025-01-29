@@ -1,17 +1,17 @@
 NAME = fractol 
 
 CC = cc
-CFLAGS = -g -Wall -Wextra -Werror -w
+CFLAGS = -g -Wall -Wextra -Werror 
 RM = rm -f
 IFLAGS = -Iminilibx/minilibx-linux
 LFLAGS = -Lminilibx/minilibx-linux
 OBJ_DIR = ./obj
 
-SRC = sources/loop/keys.c sources/loop/window.c \
-			 sources/fractal/mandelbrot.c sources/fractal/julia.c \
-			 sources/main/main.c sources/main/parsing.c \
-			 sources/utils/tools.c sources/utils/error.c \
-			 sources/utils/ft_split.c sources/utils/atof.c 
+SRC = sources/window/keys.c sources/window/window.c \
+	  sources/fractal/mandelbrot.c sources/fractal/julia.c \
+	  sources/main/main.c sources/main/parsing.c \
+	  sources/utils/tools.c sources/utils/error.c \
+	  sources/utils/ft_split.c sources/utils/atof.c 
 
 OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
 

@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:35:58 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/29 11:20:43 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/29 12:32:13 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ static int	number_sign(char s, int *i)
 	sign = 1;
 	if (s == '+' || s == '-')
 	{
-		if (s[i] == '-')
+		if (s == '-')
 			sign = -1;
-		*i++;
+		(*i)++;
 	}
 	return (sign);
 }
 
-static double	convert_number(char *s, int *j, t_bool *res)
+static double	convert_number(const char *s, int *j, t_bool *res)
 {
 	double	div;
 	int		i;
@@ -65,7 +65,7 @@ t_bool	ft_atof_valid(const char *s, float *value, t_bool res, int i)
 	{
 		*value = s[i++] - '0';
 		if (s[i] == '\0')
-			return (TRUE);
+			res = TRUE;
 	}
 	number = convert_number(s, &i, &res);
 	if (s[i] != '\0')

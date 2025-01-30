@@ -1,7 +1,7 @@
 NAME = fractol 
 
 CC = cc
-CFLAGS = -g -Wall -Wextra -Werror -w 
+CFLAGS = -g -Wall -Wextra -Werror 
 RM = rm -f
 IFLAGS = -Iminilibx/minilibx-linux
 LFLAGS = -Lminilibx/minilibx-linux

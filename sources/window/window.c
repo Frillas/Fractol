@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:22:40 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/30 04:46:59 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/30 05:22:21 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ int	exit_window(t_data *data)
 
 void	zoom(t_data *data, double factor, double mouse_x, double mouse_y)
 {
-	float	range_x;
-	float	range_y;
-	float	center_x;
-	float	center_y;
+	double	range_x;
+	double	range_y;
+	double	center_x;
+	double	center_y;
 
 	range_x = data->x2 - data->x1;
 	range_y = data->y2 - data->y1;

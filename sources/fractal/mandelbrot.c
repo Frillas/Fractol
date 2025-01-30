@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:39:23 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/30 04:51:23 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/30 05:19:04 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	init_mandelbrot(t_data *data)
 	data->x2 = 0.6;
 	data->y1 = -1.2;
 	data->y2 = 1.2;
-	data->it_max = 100;
+	data->it_max = 200;
 	data->zoom = 300;
 }
 

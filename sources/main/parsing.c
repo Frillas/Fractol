@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:45:34 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/29 12:19:10 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/30 04:27:57 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	add_number(float value, t_data *data)
 void	build_args(char **numbers, t_data *data, int argc)
 {
 	int		i;
-	float	value;
+	double	value;
 	t_bool	res;
 
 	i = 0;

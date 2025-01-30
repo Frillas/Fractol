@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:28:57 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/29 12:24:36 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/30 04:28:34 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int				check_arg(int argc, char *argv[], t_data *data);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 void			img_pix_put(t_data *data, int x, int y, int color);
 unsigned int	get_color(unsigned int i, unsigned int it_max);
-t_bool			ft_atof_valid(const char *s, float *value, t_bool res, int i);
+t_bool			ft_atof_valid(const char *s, double *value, t_bool res, int i);
 void			ft_free(char **result);
 //error.c
 void			handle_error(void);

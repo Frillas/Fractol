@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:22:40 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/29 15:00:21 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/30 04:46:59 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,9 @@ void	zoom(t_data *data, double factor, double mouse_x, double mouse_y)
 	range_x = data->x2 - data->x1;
 	range_y = data->y2 - data->y1;
 	center_x = data->x1 + mouse_x / data->zoom;
-	center_y = data->y1 + ((range_x * data->zoom) - mouse_y) / data->zoom;
+	center_y = data->y1 + mouse_y / data->zoom;
+	if (data->fract_choice == 2)
+		center_y = data->y1 + ((range_x * data->zoom) - mouse_y) / data->zoom;
 	data->x1 = center_x - (range_x / factor) / 2.0;
 	data->x2 = center_x + (range_x / factor) / 2.0;
 	data->y1 = center_y - (range_y / factor) / 2.0;

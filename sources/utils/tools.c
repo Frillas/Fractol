@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 06:56:16 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/29 11:21:09 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/30 04:42:33 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ void	img_pix_put(t_data *data, int x, int y, int color)
 
 unsigned int	get_color(unsigned int i, unsigned int it_max)
 {
-	float			t;
+	double			t;
 	unsigned int	r;
 	unsigned int	g;
 	unsigned int	b;
 
-	t = ((float)i / it_max) + 0.03;
+	t = ((double)i / it_max) + 0.03;
 	r = (9 * (1 - t) * t * t * t * 255);
 	g = (15 * (1 - t) * (1 - t) * t * t * 255);
 	b = (8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);

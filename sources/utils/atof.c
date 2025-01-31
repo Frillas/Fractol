@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:35:58 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/31 15:57:44 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/31 18:30:59 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,16 @@ static double	convert_number(const char *s, int *j, t_bool *res)
 	i = *j;
 	div = 10;
 	number = 0;
-	if ((i == 1) && (s[i] == '.') && (s[i - 1] != '2'))
+	if ((i >= 1) && (s[i] == '.'))
 	{
 		i++;
 		while (s[i] >= '0' && s[i] <= '9')
 		{
+			if (s[*j - 1] == '2' && s[i] != '0')
+			{
+				*res = FALSE;
+				break ;
+			}
 			*res = TRUE;
 			number = number + ((s[i] - '0') / div);
 			div *= 10;

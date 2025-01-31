@@ -6,13 +6,13 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:45:34 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/31 07:14:06 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/31 22:35:56 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/fractol.h"
 
-void	add_number(float value, t_data *data)
+static void	add_number(float value, t_data *data)
 {
 	static int	i;
 
@@ -29,7 +29,7 @@ void	add_number(float value, t_data *data)
 	}
 }
 
-void	build_args(char **numbers, t_data *data, int argc)
+static void	build_args(char **numbers, t_data *data, int argc)
 {
 	int		i;
 	double	value;
@@ -57,7 +57,7 @@ void	build_args(char **numbers, t_data *data, int argc)
 	ft_free(numbers);
 }
 
-void	parsing(int argc, char *argv[], t_data *data)
+static void	parsing(int argc, char *argv[], t_data *data)
 {
 	int		i;
 	char	**numbers;

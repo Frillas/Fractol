@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:28:57 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/31 07:41:01 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/31 22:58:36 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 
 # define TRUE 1
 # define FALSE 0
+# define HEIGHT 780
+# define WIDTH 720
 # define ZOOM_UP 4 
 # define ZOOM_DOWN 5 
 # define ESC 65307 
@@ -65,8 +67,9 @@ int				check_arg(int argc, char *argv[], t_data *data);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 void			img_pix_put(t_data *data, int x, int y, int color);
 unsigned int	get_color(unsigned int i, unsigned int it_max);
-t_bool			ft_atof_valid(const char *s, double *value, t_bool res, int i);
 void			ft_free(char **result);
+//atof.c
+t_bool			ft_atof_valid(const char *s, double *value, t_bool res, int i);
 //error.c
 void			handle_error(void);
 int				is_empty(char *src);

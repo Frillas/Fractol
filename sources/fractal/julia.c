@@ -6,7 +6,7 @@
 /*   By: aroullea <aroullea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 18:15:58 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/30 05:11:24 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/31 23:09:37 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void	init_julia(t_data *data)
 	data->x2 = 1.1;
 	data->y1 = -1.2;
 	data->y2 = 1.2;
-	data->it_max = 300;
+	data->it_max = 100;
 	data->zoom = 300;
 }
 
-unsigned int	calc_julia(double z_r, double z_i, t_data *data)
+static unsigned	int	calc_julia(double z_r, double z_i, t_data *data)
 {
 	unsigned int	i;
 	double			tmp;

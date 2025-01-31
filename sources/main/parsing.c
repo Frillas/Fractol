@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:45:34 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/30 04:27:57 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/31 07:14:06 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,8 @@ void	parsing(int argc, char *argv[], t_data *data)
 {
 	int		i;
 	char	**numbers;
-	t_bool	res;
 
 	i = 2;
-	res = FALSE;
 	while (i < argc)
 	{
 		if (is_empty (argv[i]))

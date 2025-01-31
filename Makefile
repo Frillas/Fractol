@@ -3,8 +3,8 @@ NAME = fractol
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
-IFLAGS = -Iminilibx/minilibx-linux
-LFLAGS = -Lminilibx/minilibx-linux
+IFLAGS = -Iminilibx
+LFLAGS = -Lminilibx
 OBJ_DIR = ./obj
 
 SRC = sources/window/keys.c sources/window/window.c \
@@ -22,10 +22,12 @@ $(OBJ_DIR)/%.o: %.c
 	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
+	make -C minilibx
 	$(CC) $(CFLAGS) $(OBJ) $(LFLAGS) -lmlx -lXext -lX11 -o $(NAME)
 
 clean:
 	$(RM) -r $(OBJ_DIR)
+	make clean -C minilibx
 
 fclean: clean
 	$(RM) $(NAME)

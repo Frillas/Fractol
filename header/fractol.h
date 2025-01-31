@@ -6,7 +6,7 @@
 /*   By: aroullea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:28:57 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/30 04:28:34 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/01/31 07:41:01 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@
 # include <mlx.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "type.h"
 
+# define TRUE 1
+# define FALSE 0
 # define ZOOM_UP 4 
 # define ZOOM_DOWN 5 
 # define ESC 65307 
 
+typedef int	t_bool;
 typedef struct s_data
 {
 	void			*mlx_ptr;

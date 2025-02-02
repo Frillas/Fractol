@@ -6,7 +6,7 @@
 /*   By: aroullea <aroullea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 18:15:58 by aroullea          #+#    #+#             */
-/*   Updated: 2025/01/31 23:09:37 by aroullea         ###   ########.fr       */
+/*   Updated: 2025/02/02 15:59:34 by aroullea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	init_julia(t_data *data)
 	data->x2 = 1.1;
 	data->y1 = -1.2;
 	data->y2 = 1.2;
-	data->it_max = 100;
+	data->it_max = 200;
 	data->zoom = 300;
 }
 
